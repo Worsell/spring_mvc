@@ -1,35 +1,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <html>
+<head>
+    <meta charset="utf-8">
+    <title>Тег META, атрибут charset</title>
+</head>
+
 <body>
-<c:set var="locale" scope="session" value="${param.get(\"locale\")}"/>
-<c:set var="ru" scope="session" value="ru"> </c:set>
-<c:set var="en" scope="session" value="en"> </c:set>
 
 <table border="1">
-    <c:choose>
-        <c:when test="${ru.equals(locale)}">
-            <tr>
-                <th>Имя машины</th>
-                <th>Цена машины</th>
-                <td>Тип машины</td>
-            </tr>
-        </c:when>
-        <c:when test="${en.equals(locale)}">
-            <tr>
-                <th>name of cars</th>
-                <th>price of cars</th>
-                <td>type of cars</td>
-            </tr>
-        </c:when>
-        <c:otherwise>
-            <tr>
-                <th>name of cars</th>
-                <th>price of cars</th>
-                <td>type of cars</td>
-            </tr>
-        </c:otherwise>
-    </c:choose>
-
+    <tr>
+        <th><spring:message code="label.first"/></th>
+        <th><spring:message code="label.second"/></th>
+        <td><spring:message code="label.third"/></td>
+    </tr>
     <c:forEach var="car" items="${cars}">
         <tr>
             <th>${car.name}</th>
